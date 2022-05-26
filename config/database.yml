@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5434
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  pool: <%= ENV['RAILS_MAX_THREADS'] %>
+
+development:
+  <<: *default
+  database: ror_development
+
+test:
+  <<: *default
+  database: ror_test
+
+production:
+  <<: *default
+  database: ror_production
+  username: ror
+  password: <%= ENV["ROR_DATABASE_PASSWORD"] %>

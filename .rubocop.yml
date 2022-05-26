@@ -1,0 +1,105 @@
+require: rubocop-rails
+
+AllCops:
+  NewCops: enable
+  DisplayCopNames: true
+  SuggestExtensions: false
+  Exclude:
+    - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'Gemfile'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'tmp/**/*'
+    - 'config/initializers/devise.rb'
+    - 'config/**/*'
+    - 'test/test_helper.rb'
+    - 'test/channels/application_cable/connection_test.rb'
+
+Naming/VariableNumber:
+  EnforcedStyle: 'snake_case'
+  CheckSymbols: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+Style/OpenStructUse:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - '**/*.gemspec'
+    - 'config/routes.rb'
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - '**/*_spec.rb'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**/*.rb'
+    - 'db/seeds/**/*.rb'
+  Max: 20
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Layout/TrailingWhitespace:
+  AllowInHeredoc: true
+
+Layout/DotPosition:
+  EnforcedStyle: 'trailing'
+
+Layout/HashAlignment:
+  EnforcedHashRocketStyle:
+    - key
+    - table
+  EnforcedColonStyle:
+    - key
+    - table
+
+Layout/LineLength:
+  Max: 100
+  AllowedPatterns:
+    - !ruby/regexp /\A +(it|describe|context|shared_examples|include_examples|it_behaves_like) ["']/
+  Exclude:
+    - 'spec/**/*.rb'
+
+Lint/BooleanSymbol:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Naming/PredicateName:
+  Enabled: false
