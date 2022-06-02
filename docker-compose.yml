@@ -10,6 +10,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: secret
+  mail:
+    image: schickling/mailcatcher
+    ports:
+      - "1025:1025"
+      - "1080:1080"
   
 volumes:
     dev_path_app_db:

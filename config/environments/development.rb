@@ -44,6 +44,10 @@ Rails.application.configure do
   # Devise config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Mailcatcher config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { address: 'mailcatcher', port: 1025 }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
