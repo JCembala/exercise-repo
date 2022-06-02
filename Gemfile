@@ -7,7 +7,7 @@ ruby '3.1.2'
 gem 'factory_bot', '~> 6.2'
 gem 'faker', '~> 2.21'
 gem 'devise', '~> 4.8'
-gem 'bootstrap', '~> 5.1'
+gem 'bootstrap', '~> 5.1.3'
 gem 'dotenv-rails', '~> 2.7.6', groups: %i[development test]
 gem 'overcommit', '~> 0.59.1'
 gem 'rubocop', '~> 1.30', require: false
