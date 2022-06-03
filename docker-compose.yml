@@ -8,8 +8,8 @@ services:
     volumes:
       - dev_path_app_db:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: secret
+      POSTGRES_USER: ENV['POSTGRES_USER']
+      POSTGRES_PASSWORD: ENV['POSTGRES_PASSWORD']
   mail:
     image: schickling/mailcatcher
     ports:
