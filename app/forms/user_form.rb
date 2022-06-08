@@ -11,10 +11,6 @@ class UserForm < Patterns::Form
   private
 
   def persist
-    update_user
-  end
-
-  def update_user
     resource.update(attributes)
   end
 end

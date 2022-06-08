@@ -3,14 +3,8 @@ require 'rails_helper'
 RSpec.describe UserForm do
   describe '#save' do
     it 'persists user in database' do
-      user = User.new
-      form = UserForm.new(
-        user,
-        first_name: 'Jake',
-        last_name: 'Pop',
-        password: '12345678',
-        email: 'jake.pop@example.com'
-      )
+      user = create(:user)
+      form = UserForm.new(user)
 
       result = form.save
 
@@ -25,30 +19,18 @@ RSpec.describe UserForm do
     end
 
     it 'updates existing user' do
-      user = User.create(
-        first_name: 'Jake',
-        last_name: 'Pop',
-        password: '12345678',
-        email: 'jake.pop@example.com'
-      )
-
-      form = UserForm.new(
-        user,
-        first_name: 'Jake',
-        last_name: 'Updated',
-        password: '12345678',
-        email: 'jake.updated@example.com'
-      )
+      user = create(:user)
+      form = UserForm.new(user, first_name: 'Bob', last_name: 'Doe')
 
       result = form.save
 
       expect(result).to be true
       expect(user).to be_persisted
       expect(user).to have_attributes(
-        first_name: 'Jake',
-        last_name: 'Updated',
+        first_name: 'Bob',
+        last_name: 'Doe',
         password: '12345678',
-        email: 'jake.updated@example.com'
+        email: 'jake.pop@example.com'
       )
     end
 
