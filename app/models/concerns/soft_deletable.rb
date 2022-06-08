@@ -12,7 +12,7 @@ module SoftDeletable
   end
 
   def destroy
-    soft_delete
+    delete
   end
 
   def self.included(klass)
