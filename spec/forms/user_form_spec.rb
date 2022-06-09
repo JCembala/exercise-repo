@@ -12,10 +12,10 @@ RSpec.describe UserForm do
       expect(user).to be_persisted
       expect(user).to have_attributes(
         first_name: 'Jake',
-        last_name: 'Pop',
-        password: '12345678',
-        email: 'jake.pop@example.com'
+        last_name: 'Pop'
       )
+      expect(user.email).not_to be_nil
+      expect(user.password).not_to be_nil
     end
 
     it 'updates existing user' do
@@ -28,9 +28,7 @@ RSpec.describe UserForm do
       expect(user).to be_persisted
       expect(user).to have_attributes(
         first_name: 'Bob',
-        last_name: 'Doe',
-        password: '12345678',
-        email: 'jake.pop@example.com'
+        last_name: 'Doe'
       )
     end
 
