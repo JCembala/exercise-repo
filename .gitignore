@@ -32,3 +32,7 @@
 
 # Secret env
 .env.local
+
+# solargraph gem config
+.solargraph.yml
+rails.rb
