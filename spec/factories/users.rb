@@ -12,4 +12,8 @@ FactoryBot.define do
       archived_at { Time.now.utc }
     end
   end
+
+  factory :admin, class: 'User', parent: :user do
+    admin { true }
+  end
 end

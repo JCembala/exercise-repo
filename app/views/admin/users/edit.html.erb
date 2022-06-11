@@ -1,0 +1,17 @@
+<h2>Edit <%=@user.first_name%></h2>
+<%= form_for(@user, url: "/admin/users/#{@user.id}", html: { method: :put }) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+<h3>Cancel my account</h3>
+<p>Unhappy? <%= button_to "Cancel my account", "/admin/users/#{@user.id}", data: { confirm: "Are you sure?" }, method: :delete %></p>
+<%= link_to "Back", :back %>

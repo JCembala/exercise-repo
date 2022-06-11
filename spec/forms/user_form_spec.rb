@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UserForm do
   describe '#save' do
-    context 'when adding user by form' do
+    context 'when adding new user by form' do
       it 'persists user in database' do
         user = User.new
         form = UserForm.new(
@@ -26,7 +26,7 @@ RSpec.describe UserForm do
       end
     end
 
-    context 'when changes user data'
+    context 'when modifying existing user data'
     it 'updates existing user except its email' do
       user = create(
         :user,
@@ -71,9 +71,7 @@ RSpec.describe UserForm do
       expect(form.errors.full_messages).to eq [
         "First name can't be blank",
         "Last name can't be blank",
-        "Password can't be blank",
         "Email can't be blank",
-        'Password is too short (minimum is 8 characters)',
         'Email is invalid'
       ]
     end
@@ -93,8 +91,8 @@ RSpec.describe UserForm do
       expect(result).to be false
       expect(user).not_to be_persisted
       expect(form.errors.full_messages).to eq [
-        'Password is too short (minimum is 8 characters)',
-        'Email is invalid'
+        'Email is invalid',
+        'Password is too short (minimum is 8 characters)'
       ]
     end
   end
