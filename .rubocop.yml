@@ -51,6 +51,7 @@ Style/OpenStructUse:
   Enabled: false
 
 Metrics/BlockLength:
+  IgnoredMethods: ["describe", "context"]
   Exclude:
     - 'Rakefile'
     - '**/*.rake'

@@ -20,12 +20,12 @@
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
           <%if user_signed_in?%>
-          <li class="nav-item active">
-            <%= link_to 'Edit profile', edit_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete  %>
-          </li>
+            <li class="nav-item active">
+              <%= link_to 'Edit profile', current_user.admin ? admin_users_path : edit_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete  %>
+            </li>
           <%end%>
         </ul>
       </div>
