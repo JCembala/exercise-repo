@@ -3,8 +3,13 @@ require 'rails_helper'
 RSpec.describe UserForm do
   describe '#save' do
     it 'persists user in database' do
-      user = create(:user)
-      form = UserForm.new(user)
+      user = User.new
+      form = UserForm.new(user, {
+                            first_name: 'Jake',
+                            last_name: 'Drew',
+                            password: 'this-is-my-password',
+                            email: 'jake.drew@drew.com'
+                          })
 
       result = form.save
 
@@ -12,15 +17,15 @@ RSpec.describe UserForm do
       expect(user).to be_persisted
       expect(user).to have_attributes(
         first_name: 'Jake',
-        last_name: 'Pop'
+        last_name: 'Drew',
+        email: 'jake.drew@drew.com'
       )
-      expect(user.email).not_to be_nil
-      expect(user.password).not_to be_nil
+      expect(user.encrypted_password).to be_present
     end
 
     it 'updates existing user' do
-      user = create(:user)
-      form = UserForm.new(user, first_name: 'Bob', last_name: 'Doe')
+      user = create(:user, { first_name: 'Mark', last_name: 'Done', email: 'mark.done@done.com' })
+      form = UserForm.new(user, { first_name: 'Bob', last_name: 'Doe', email: 'bob.doe@doe.com' })
 
       result = form.save
 
@@ -28,7 +33,8 @@ RSpec.describe UserForm do
       expect(user).to be_persisted
       expect(user).to have_attributes(
         first_name: 'Bob',
-        last_name: 'Doe'
+        last_name: 'Doe',
+        email: 'mark.done@done.com'
       )
     end
 
@@ -49,6 +55,7 @@ RSpec.describe UserForm do
         expect(user).not_to be_persisted
         expect(form.errors.full_messages).to eq [
           "First name can't be blank",
+          "Last name can't be blank",
           "Password can't be blank",
           "Email can't be blank",
           'Password is too short (minimum is 8 characters)',

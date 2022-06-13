@@ -4,7 +4,7 @@ class UserForm < Patterns::Form
   attribute :password, String
   attribute :email, String
 
-  validates :first_name, :password, :email, presence: true
+  validates :first_name, :last_name, :password, :email, presence: true
   validates :password, length: { minimum: 8 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
 
