@@ -11,6 +11,10 @@ class UserForm < Patterns::Form
   private
 
   def persist
-    resource.update(attributes)
+    if resource.email.present?
+      resource.update(attributes.except(:email))
+    else
+      resource.update(attributes)
+    end
   end
 end
