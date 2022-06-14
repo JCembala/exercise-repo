@@ -5,12 +5,13 @@ RSpec.describe UserForm do
     context 'when adding user by form' do
       it 'persists user in database' do
         user = User.new
-        form = UserForm.new(user, {
-                              first_name: 'Jake',
-                              last_name: 'Drew',
-                              password: 'this-is-my-password',
-                              email: 'jake.drew@drew.com'
-                            })
+        form = UserForm.new(
+          user,
+          first_name: 'Jake',
+          last_name: 'Drew',
+          password: 'this-is-my-password',
+          email: 'jake.drew@drew.com'
+        )
 
         result = form.save
 
@@ -27,8 +28,18 @@ RSpec.describe UserForm do
 
     context 'when changes user data'
     it 'updates existing user except its email' do
-      user = create(:user, { first_name: 'Mark', last_name: 'Done', email: 'mark.done@done.com' })
-      form = UserForm.new(user, { first_name: 'Bob', last_name: 'Doe', email: 'bob.doe@doe.com' })
+      user = create(
+        :user,
+        first_name: 'Mark',
+        last_name: 'Done',
+        email: 'mark.done@done.com'
+      )
+      form = UserForm.new(
+        user,
+        first_name: 'Bob',
+        last_name: 'Doe',
+        email: 'bob.doe@doe.com'
+      )
 
       result = form.save
 
