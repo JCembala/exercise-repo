@@ -4,11 +4,9 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
-gem 'rspec', '~> 3.11'
-gem 'factory_bot', '~> 6.2'
 gem 'faker', '~> 2.21'
 gem 'devise', '~> 4.8'
-gem 'bootstrap', '~> 5.1'
+gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'dotenv-rails', '~> 2.7.6', groups: %i[development test]
 gem 'overcommit', '~> 0.59.1'
 gem 'rubocop', '~> 1.30', require: false
@@ -23,9 +21,12 @@ gem 'stimulus-rails'
 gem 'jbuilder'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'bootsnap', require: false
+gem 'rails-patterns'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'factory_bot_rails', '~> 6.2'
 end
 
 group :development do

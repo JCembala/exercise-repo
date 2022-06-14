@@ -29,3 +29,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Secret env
+.env.local
+
+# solargraph gem config
+.solargraph.yml
+rails.rb
