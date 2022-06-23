@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Archivable do
+RSpec.describe User do
   describe '#archive' do
     it 'marks user as archived by setting archived_at' do
       user = create(:user)
