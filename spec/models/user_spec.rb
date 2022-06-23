@@ -13,9 +13,8 @@ RSpec.describe User do
 
   describe '#restore' do
     it 'restores user by setting archived_at with nil' do
-      user = create(:user)
+      user = create(:user, :archived)
 
-      user.archive
       user.restore
 
       expect(user.archived_at).to be(nil)

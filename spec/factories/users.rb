@@ -7,5 +7,9 @@ FactoryBot.define do
     password { '12345678' }
     email { Faker::Internet.email }
     confirmed_at { Time.now.utc }
+
+    trait :archived do
+      archived_at { Time.now.utc }
+    end
   end
 end
