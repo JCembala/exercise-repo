@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     end
 
     root to: 'users#index'
-    get '/users', to: 'users#show'
+    get '/users', to: 'users#index'
   end
 end

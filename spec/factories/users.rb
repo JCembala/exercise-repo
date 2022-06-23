@@ -11,9 +11,9 @@ FactoryBot.define do
     trait :archived do
       archived_at { Time.now.utc }
     end
-  end
 
-  factory :admin, class: 'User', parent: :user do
-    admin { true }
+    trait :admin do
+      admin { true }
+    end
   end
 end
