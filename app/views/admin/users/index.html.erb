@@ -2,6 +2,14 @@
   Logged in as <strong><%= current_user.email %></strong>.</br>
 <%= link_to 'Edit your profile', edit_user_registration_path %>
 </p>
+<%= search_form_for @q, url: admin_users_path do |f| %>
+
+  <%= f.label :full_name_cont, "Input: " %>
+  <%= f.search_field :full_name_cont %>
+
+  <%= f.submit %>
+<% end %>
+
 <div class="mx-auto w-50">
   <table class="table">
     <thead>

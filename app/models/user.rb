@@ -6,4 +6,12 @@ class User < ApplicationRecord
          :confirmable
 
   include Archivable
+
+  ransacker :full_name do |parent|
+    Arel::Nodes::NamedFunction.new('CONCAT_WS', [
+                                     Arel::Nodes.build_quoted(' '),
+                                     parent.table[:first_name],
+                                     parent.table[:last_name]
+                                   ])
+  end
 end
