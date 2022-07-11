@@ -222,6 +222,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (3.2.1)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -323,6 +327,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -342,6 +347,7 @@ DEPENDENCIES
   pundit (~> 2.2)
   rails (~> 7.0.3)
   rails-patterns
+  ransack (~> 3.2)
   rspec-rails (~> 6.0.0.rc1)
   rubocop (~> 1.30)
   rubocop-rails (~> 2.14.2)
@@ -357,4 +363,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.13
+   2.3.7

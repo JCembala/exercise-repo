@@ -2,7 +2,8 @@ module Admin
   class UsersController < ApplicationController
     def index
       authorize [:admin, User]
-      @users = User.all
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
     end
 
     def update

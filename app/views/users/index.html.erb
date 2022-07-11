@@ -1,3 +1,32 @@
 <p>
   Logged in as <strong><%= current_user.email %></strong>.</br>
+<%= link_to 'Edit your profile', edit_user_registration_path %>
 </p>
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :first_name_cont %>
+  <%= f.search_field :first_name_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<div class="mx-auto w-25">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= user.first_name  %></td>
+          <td><%= user.last_name  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
