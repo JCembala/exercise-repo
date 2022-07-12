@@ -14,7 +14,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">First name</th>
         <th scope="col">Last name</th>
       </tr>
@@ -22,9 +21,15 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <th scope="row"><%= user.id %></th>
           <td><%= user.first_name  %></td>
           <td><%= user.last_name  %></td>
+          <td>
+            <% if user.followed_by?(current_user) %>
+              <h5><%= button_to "Unfollow", user_follow_path(user), method: :delete %></h5>
+            <% else %>
+              <h5><%= button_to "Follow", user_follow_path(user) %></h5>
+            <% end%>
+          </td>
         </tr>
       <% end %>
     </tbody>

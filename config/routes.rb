@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     end
 
     root to: 'users#index'
+    
     get '/users', to: 'users#index'
+    resources :followed_users, only: [:index]
+
+    resources :users do
+      resource :follow, only: [:create, :destroy]
+    end
   end
 end
