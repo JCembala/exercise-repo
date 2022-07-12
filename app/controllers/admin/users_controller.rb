@@ -11,9 +11,9 @@ module Admin
       form = UserForm.new(@user, params[:user])
 
       if form.save
-        redirect_to admin_users_path
+        redirect_to admin_users_path, notice: t('user.updated')
       else
-        render 'edit'
+        render :edit, alert: t('user.not_updated'), status: :internal_server_error
       end
     end
 

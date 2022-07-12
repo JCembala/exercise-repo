@@ -31,3 +31,6 @@
 
 en:
   not_authorized: 'You are not authorized to perform this action.'
+  user:
+    updated: 'User updated successfully'
+    not_updated: 'User update failed'
