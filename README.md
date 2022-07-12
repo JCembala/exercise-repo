@@ -6,6 +6,11 @@ Set up fresh app with the following settings:
 - db: PostgreSQL 14
 - `rubocop` as static code analyzer
 
+### Sendgrid
+
+Application uses Sendgrid. You have to add your .env.local file with your API_KEY.
+Check .env for more info
+
 ### Overcommit
 This project is using overcommit to ensure commit quality. 
 
