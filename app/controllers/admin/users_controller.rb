@@ -13,7 +13,8 @@ module Admin
       if form.save
         redirect_to admin_users_path, notice: t('user.updated')
       else
-        render :edit, alert: t('user.not_updated'), status: :internal_server_error
+        flash.now[:alert] = t('user.not_updated')
+        render :edit, status: :unprocessable_entity
       end
     end
 
