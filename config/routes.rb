@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     root to: 'users#index'
     get '/users', to: 'users#index'
 
-    post '/users/:id/follow', to: 'users#follow', as: 'follow_user'
-    post '/users/:id/unfollow', to: 'users#unfollow', as: 'unfollow_user'
+    post '/users/:id/follow', to: 'follows#create', as: 'follow_user'
+    post '/users/:id/unfollow', to: 'follows#destroy', as: 'unfollow_user'
   end
 end
