@@ -1,0 +1,20 @@
+<div class="mx-auto w-25">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">First name</th>
+        <th scope="col">Last name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @followees.each do |followee| %>
+        <tr>
+          <th scope="row"><%= followee.id %></th>
+          <td><%= followee.first_name  %></td>
+          <td><%= followee.last_name  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

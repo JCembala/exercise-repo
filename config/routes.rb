@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     root to: 'users#index'
     
     get '/users', to: 'users#index'
+    get '/users/followed', to: 'follows#show', as: 'followed_users'
 
     resources :users do
       resource :follow, only: [:create, :destroy]
