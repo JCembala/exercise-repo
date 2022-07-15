@@ -9,6 +9,9 @@
         <li class="nav-item active">
           <%= link_to 'Edit profile', edit_user_registration_path, class: "nav-link" %>
         </li>
+        <li class="nav-item active">
+          <%= link_to 'Followed', followed_users_path, class: "nav-link" %>
+        </li>
         <%if current_user.admin%>
           <li class="nav-item active">
             <%= link_to "Users", admin_users_path, class: "nav-link", method: :delete  %>
