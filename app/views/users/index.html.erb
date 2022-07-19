@@ -14,7 +14,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">First name</th>
         <th scope="col">Last name</th>
       </tr>
@@ -22,7 +21,6 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <th scope="row"><%= user.id %></th>
           <td><%= user.first_name  %></td>
           <td><%= user.last_name  %></td>
           <td>
