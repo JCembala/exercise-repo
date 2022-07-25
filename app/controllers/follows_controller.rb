@@ -1,10 +1,6 @@
 class FollowsController < ApplicationController
   before_action :fetch_user_data, only: [:create, :destroy]
 
-  def show
-    @followees = current_user.followees
-  end
-
   def create
     follow = Follow.new(follower_id: current_user.id, followed_id: @user.id)
     if follow.save
