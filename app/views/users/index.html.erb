@@ -27,9 +27,9 @@
           <td><%= user.last_name  %></td>
           <td>
             <% if current_user.followed_by?(user) %>
-              <h5><%= button_to "Unfollow", unfollow_user_path(user), method: :post %></h5>
+              <h5><%= button_to "Unfollow", user_follow_path(user), method: :delete %></h5>
             <% else %>
-              <h5><%= button_to "Follow", follow_user_path(user), method: :post  %></h5>
+              <h5><%= button_to "Follow", user_follow_path(user) %></h5>
             <% end%>
           </td>
         </tr>
