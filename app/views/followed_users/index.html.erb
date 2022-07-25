@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <% @followees.each do |followee| %>
-        <tr>
+      <% @followees.find_each do |followee| %>
+        <tr id="followee">
           <td><%= followee.first_name  %></td>
           <td><%= followee.last_name  %></td>
         </tr>
