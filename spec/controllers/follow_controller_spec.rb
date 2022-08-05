@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe FollowsController do
   describe '#create' do
     it 'allows user to follow another user' do

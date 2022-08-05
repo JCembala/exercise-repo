@@ -7,3 +7,9 @@ en:
     follow_failure: "There was an error following %{user_name}"
     unfollow_success: "You are no longer following %{user_name}"
     unfollow_failure: "Couldn't unfollow %{user_name}, please try again later"
+  post:
+    not_created: "The post was not created"
+    created: "The post was created successfully"
+    destroyed: "The post was destroyed successfully"
+    updated: "The post was updated successfully"
+    not_updated: "The post update failed"

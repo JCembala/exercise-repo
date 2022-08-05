@@ -15,6 +15,8 @@ class User < ApplicationRecord
                             inverse_of: 'follower', dependent: :destroy
   has_many :followees, through: :followed_users, source: :followed
 
+  has_many :posts, dependent: :destroy
+
   ransacker :full_name do |parent|
     Arel::Nodes::NamedFunction.new('CONCAT_WS', [
                                      Arel::Nodes.build_quoted(' '),
@@ -25,5 +27,9 @@ class User < ApplicationRecord
 
   def followed_by?(user)
     followers.include? user
+  end
+
+  def owner_of?(resource)
+    id == resource.user.id
   end
 end
