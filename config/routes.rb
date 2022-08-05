@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     
     get '/users', to: 'users#index'
     resources :followed_users, only: [:index]
+    resources :feeds, only: [:index]
+    resources :posts
 
     resources :users do
       resource :follow, only: [:create, :destroy]

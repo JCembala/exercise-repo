@@ -6,11 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 gem 'faker', '~> 2.21'
 gem 'devise', '~> 4.8'
-gem 'bootstrap', '~> 5.1', '>= 5.1.3'
+gem 'bootstrap', '~> 5.2'
 gem 'dotenv-rails', '~> 2.7.6', groups: %i[development test]
 gem 'overcommit', '~> 0.59.1'
-gem 'rubocop', '~> 1.30', require: false
-gem 'rubocop-rails', '~> 2.14.2', require: false
+gem 'rubocop', '~> 1.35', require: false
+gem 'rubocop-rails', '~> 2.15.2', require: false
 gem 'rails', '~> 7.0.3'
 gem 'sprockets-rails'
 gem 'pg', '~> 1.1'
@@ -24,6 +24,7 @@ gem 'bootsnap', require: false
 gem 'rails-patterns'
 gem 'pundit', '~> 2.2', require: true
 gem 'ransack', '~> 3.2'
+gem 'kaminari', '~> 1.2.2'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]

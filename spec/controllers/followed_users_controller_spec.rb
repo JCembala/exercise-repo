@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe FollowedUsersController do
   describe 'GET #index' do
     it 'contains @followees variable with users that follow signed user' do

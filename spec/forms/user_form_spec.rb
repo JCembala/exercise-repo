@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe UserForm do
   describe '#save' do
     context 'when adding new user by form' do

@@ -36,3 +36,6 @@
 # solargraph gem config
 .solargraph.yml
 rails.rb
+
+# VScode settings
+.vscode/*

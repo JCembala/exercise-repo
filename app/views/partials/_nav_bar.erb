@@ -7,16 +7,22 @@
     <ul class="navbar-nav mr-auto">
       <%if user_signed_in?%>
         <li class="nav-item active">
-          <%= link_to 'Edit profile', edit_user_registration_path, class: "nav-link" %>
+          <%= link_to 'My Posts', posts_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Feed', feeds_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to 'Followed', followed_users_path, class: "nav-link" %>
         </li>
         <%if current_user.admin%>
           <li class="nav-item active">
-            <%= link_to "Users", admin_users_path, class: "nav-link", method: :delete  %>
+            <%= link_to "Admin", admin_users_path, class: "nav-link", method: :delete  %>
           </li>
         <%end%>
+        <li class="nav-item active">
+          <%= link_to 'Edit my profile', edit_user_registration_path, class: "nav-link" %>
+        </li>
         <li class="nav-item active">
           <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete  %>
         </li>
