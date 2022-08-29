@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Follow.destroy_all
+Post.destroy_all
+User.destroy_all
+
+# Creating admin
 User.create!(
     first_name:'admin',
     last_name:'admin',
@@ -16,8 +21,9 @@ User.create!(
     admin: true
 )
 
+# Creating users
 20.times do |i|
-    User.create!(
+    u = User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
         email: "user#{i}@example.com",
@@ -25,8 +31,15 @@ User.create!(
         password_confirmation: "password",
         confirmed_at: Time.now.utc
     )
+
+    Post.create!(
+        title: "#{u.first_name} #{u.last_name} post",
+        content: Faker::Lorem.paragraph,
+        user_id: u.id
+    )
 end
 
+# Creating archived users
 10.times do |i|
     User.create!(
         first_name: Faker::Name.first_name,
@@ -38,3 +51,4 @@ end
         archived_at: Time.now.utc
     )
 end
+

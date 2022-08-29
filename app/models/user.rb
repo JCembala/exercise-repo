@@ -17,6 +17,9 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_encrypted :api_key
+  blind_index :api_key
+
   ransacker :full_name do |parent|
     Arel::Nodes::NamedFunction.new('CONCAT_WS', [
                                      Arel::Nodes.build_quoted(' '),

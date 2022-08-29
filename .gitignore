@@ -39,3 +39,5 @@ rails.rb
 
 # VScode settings
 .vscode/*
+
+/config/credentials/test.key

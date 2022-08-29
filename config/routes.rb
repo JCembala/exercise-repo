@@ -26,5 +26,17 @@ Rails.application.routes.draw do
     resources :users do
       resource :follow, only: [:create, :destroy]
     end
+
+    namespace :user do 
+      resource :api_keys, only: [:update]
+    end
+
+    namespace :api do
+      namespace :v1 do
+        defaults format: :json do
+          resources :posts, only: [:index]
+        end
+      end
+    end
   end
 end

@@ -1,4 +1,4 @@
-RSpec.describe 'Feeds' do
+RSpec.describe 'Feeds', type: :request do
   describe 'GET /index' do
     context 'when user is authenticated' do
       it 'renders a successful response' do
