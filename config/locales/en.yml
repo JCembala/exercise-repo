@@ -13,3 +13,6 @@ en:
     destroyed: "The post was destroyed successfully"
     updated: "The post was updated successfully"
     not_updated: "The post update failed"
+  api_key: 
+    updated: "Api key generated successfully"
+    not_updated: "Api key generation failed"

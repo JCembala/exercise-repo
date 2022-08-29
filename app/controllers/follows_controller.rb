@@ -1,4 +1,4 @@
-class FollowsController < ApplicationController
+class FollowsController < BaseController
   before_action :fetch_user_data, only: [:create, :destroy]
 
   def create

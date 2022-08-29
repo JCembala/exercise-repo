@@ -25,6 +25,8 @@ gem 'rails-patterns'
 gem 'pundit', '~> 2.2', require: true
 gem 'ransack', '~> 3.2'
 gem 'kaminari', '~> 1.2.2'
+gem 'lockbox', '~> 1.0.0'
+gem 'blind_index', '~> 2.2'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]

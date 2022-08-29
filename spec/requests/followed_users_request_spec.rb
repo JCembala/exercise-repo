@@ -1,4 +1,4 @@
-RSpec.describe 'Followed Users' do
+RSpec.describe 'Followed Users', type: :request do
   describe 'GET /index' do
     context 'when user is authenticated' do
       it 'renders a successful response' do

@@ -1,5 +1,5 @@
 module Admin
-  class UsersController < ApplicationController
+  class UsersController < BaseController
     def index
       authorize [:admin, User]
       @q = User.ransack(params[:q])

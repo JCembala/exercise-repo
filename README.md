@@ -19,9 +19,17 @@ password: password
 Application uses Sendgrid. You have to add your .env.local file with your API_KEY.
 Check .env for more info
 
+### Lockbox
+
+You have to add your Master_key to .env.local file: 
+
+* generate it with `Lockbox.generate_key`
+* add it to .env.local file: `LOCKBOX_MASTER_KEY=your_key_here`
+
+
 ### Overcommit
 This project is using overcommit to ensure commit quality. 
 
-Run `gem install overcommit`
-Move to your project dir
-Run `overcommit --install`
+* Run `gem install overcommit`
+* Move to your project dir
+* Run `overcommit --install`
