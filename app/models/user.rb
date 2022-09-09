@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  has_many_attached :feed_exports
+
   has_encrypted :api_key
   blind_index :api_key
 

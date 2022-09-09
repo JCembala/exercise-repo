@@ -18,3 +18,5 @@ en:
   api_key: 
     updated: "Api key generated successfully"
     not_updated: "Api key generation failed"
+  feed:
+    export_enqueued: "You export has been queued to process"

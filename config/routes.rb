@@ -1,15 +1,17 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, :skip => [:registrations], controllers: { 
     registrations: 'registrations',
     confirmations: 'confirmations'
   }
 
-    devise_scope :user do
-      authenticated :user do
-        root 'users#index', as: :authenticated_root
-        get '/users/sign_out', to: 'devise/sessions#destroy'
-        get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
-        put 'users' => 'registrations#update', :as => 'user_registration'
+  devise_scope :user do
+    authenticated :user do
+      root 'users#index', as: :authenticated_root
+      get '/users/sign_out', to: 'devise/sessions#destroy'
+      get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      put 'users' => 'registrations#update', :as => 'user_registration'
     end
 
     unauthenticated do
@@ -33,6 +35,7 @@ Rails.application.routes.draw do
 
     namespace :user do 
       resource :api_keys, only: [:update]
+      resources :feed_exports, only: [:index, :create]
     end
 
     namespace :api do
@@ -43,4 +46,18 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  # Basic auth for accessing RACK apps: https://blog.arkency.com/common-authentication-for-mounted-rack-apps-in-rails/
+  with_dev_auth =
+  lambda do |app|
+    Rack::Builder.new do
+      use Rack::Auth::Basic do |username, password|
+        ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(username), ::Digest::SHA256.hexdigest(ENV.fetch("DEV_USERNAME"))) &
+          ActiveSupport::SecurityUtils.secure_compare(::Digest::SHA256.hexdigest(password), ::Digest::SHA256.hexdigest(ENV.fetch("DEV_PASSWORD")))
+      end
+      run app
+    end
+  end
+
+mount with_dev_auth.call(Sidekiq::Web), at: "sidekiq"
 end
