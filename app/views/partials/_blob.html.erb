@@ -1,0 +1,8 @@
+<div id="<%= dom_id blob %>">
+  <p>
+    <strong>Filename:</strong>
+    <%= blob.filename %>
+    <br>
+    <%= link_to 'Download', rails_blob_url(blob, disposition: :attachment) %>
+  </p>
+</div>

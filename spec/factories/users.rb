@@ -19,5 +19,15 @@ FactoryBot.define do
     trait :unconfirmed do
       confirmed_at { nil }
     end
+
+    trait :with_attached_file do
+      after(:build) do |user|
+        user.feed_exports.attach(
+          io: File.open(Rails.root.join('spec/fixtures/feed_test.csv')),
+          filename: 'feed_test.csv',
+          content_type: 'text/csv'
+        )
+      end
+    end
   end
 end

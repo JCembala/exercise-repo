@@ -1,0 +1,12 @@
+<h1>Exports:</h1>
+
+<ul class="list-group d-flex p-2 align-items-center" id="blobs">
+  <% @blobs.each do |blob| %> 
+    <li class="list-group-item w-25">
+      <%= render 'partials/blob', blob: blob %>
+    </li>
+  <% end %>
+  <div class="digg_pagination">
+    <%= paginate @blobs %>
+  </div>
+</ul>
