@@ -9,6 +9,9 @@ require 'rspec/rails'
 require 'pundit/rspec'
 # Add factory bot config
 require_relative 'support/factory_bot'
+# Add sidekiq 
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

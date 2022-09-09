@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :users, :skip => [:registrations], controllers: { 
     registrations: 'registrations',
@@ -33,6 +35,8 @@ Rails.application.routes.draw do
 
     namespace :user do 
       resource :api_keys, only: [:update]
+      resource :feed_exports, only: [:create]
+      resources :feed_exports, only: [:index]
     end
 
     namespace :api do
@@ -42,5 +46,7 @@ Rails.application.routes.draw do
         end
       end
     end
+
+    mount Sidekiq::Web => '/sidekiq'
   end
 end

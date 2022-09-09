@@ -1,20 +1,28 @@
-version: "3.7"
+version: '3.7'
 
 services:
   db:
-    image: "postgres:14-alpine"
+    image: 'postgres:14-alpine'
     ports:
-      - "5434:5432"
+      - '5434:5432'
     volumes:
-      - dev_path_app_db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
     environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "secret"
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'secret'
   mail:
     image: schickling/mailcatcher
     ports:
-      - "1025:1025"
-      - "1080:1080"
+      - '1025:1025'
+      - '1080:1080'
+  redis:
+    image: 'redis:5-alpine'
+    command: 'redis-server'
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
   
 volumes:
-    dev_path_app_db:
+    db:
+    redis:
