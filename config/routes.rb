@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, :skip => [:registrations], controllers: { registrations: 'registrations' }
 
-  devise_scope :user do
-    authenticated :user do
-      root 'users#index', as: :authenticated_root
-      get '/users/sign_out', to: 'devise/sessions#destroy'
+    devise_scope :user do
+      authenticated :user do
+        root 'users#index', as: :authenticated_root
+        get '/users/sign_out', to: 'devise/sessions#destroy'
+        get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+        put 'users' => 'registrations#update', :as => 'user_registration'
     end
 
     unauthenticated do
