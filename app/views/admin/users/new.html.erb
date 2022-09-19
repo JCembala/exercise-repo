@@ -1,0 +1,18 @@
+<h2>Create new user</h2>
+<%= form_with(model: [ :admin, @user ]) do |f| %>
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create new user" %>
+  </div>
+<% end %>

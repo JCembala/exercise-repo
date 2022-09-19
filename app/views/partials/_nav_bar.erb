@@ -15,17 +15,20 @@
         <li class="nav-item active">
           <%= link_to 'Followed', followed_users_path, class: "nav-link" %>
         </li>
-        <%if current_user.admin%>
-          <li class="nav-item active">
-            <%= link_to "Admin", admin_users_path, class: "nav-link", method: :delete  %>
-          </li>
-        <%end%>
         <li class="nav-item active">
           <%= link_to 'Edit my profile', edit_user_registration_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to "Logout", destroy_user_session_path, class: "nav-link", method: :delete  %>
         </li>
+        <%if current_user.admin%>
+          <li class="nav-item active">
+            <%= link_to "Admin", admin_users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Create New User", new_admin_user_path, class: "nav-link" %>
+          </li>
+        <%end%>
       <%end%>
     </ul>
   </div>

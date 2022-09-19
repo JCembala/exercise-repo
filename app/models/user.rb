@@ -35,4 +35,10 @@ class User < ApplicationRecord
   def owner_of?(resource)
     id == resource.user.id
   end
+
+  protected
+
+  def password_required?
+    confirmed? ? super : false
+  end
 end

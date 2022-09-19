@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, :skip => [:registrations], controllers: { registrations: 'registrations' }
+  devise_for :users, :skip => [:registrations], controllers: { 
+    registrations: 'registrations',
+    confirmations: 'confirmations'
+  }
 
     devise_scope :user do
       authenticated :user do
@@ -13,9 +16,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
 
-    resource :admin
     namespace :admin do
-      resources :users
+      resources :users, only: [:index, :update, :edit, :new, :create]
     end
 
     root to: 'users#index'
