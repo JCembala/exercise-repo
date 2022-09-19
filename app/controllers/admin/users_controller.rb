@@ -23,5 +23,26 @@ module Admin
       authorize [:admin, User]
       @user = User.find(params[:id])
     end
+
+    def new
+      authorize [:admin, User]
+      @user = User.new
+    end
+
+    def create
+      if form_user_with_random_password.save
+        redirect_to admin_users_path, notice: t('user.created')
+      else
+        flash.now[:alert] = t('user.not_created')
+        render :new, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def form_user_with_random_password
+      user = User.new
+      UserForm.new(user, params[:user].merge(password: SecureRandom.hex(36)))
+    end
   end
 end

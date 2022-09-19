@@ -1,6 +1,8 @@
 en:
   not_authorized: "You are not authorized to perform this action."
   user:
+    created: "User was created successfully"
+    not_created: "User was not created"
     updated: "User updated successfully"
     not_updated: "User update failed"
     follow_success: "You are following %{user_name}"
