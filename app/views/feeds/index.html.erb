@@ -2,7 +2,7 @@
 
 <ul class="list-group d-flex p-2 align-items-center" id="posts">
   <% @posts.each do |post| %> 
-    <li class="list-group-item w-25" id='post'>
+    <li class="list-group-item w-25" id="<%= dom_id post %>">
       <%= render 'posts/post', post: post %>
     </li>
   <% end %>

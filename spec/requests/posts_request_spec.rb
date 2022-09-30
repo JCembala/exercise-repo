@@ -4,7 +4,7 @@ RSpec.describe 'Posts', type: :request do
       it 'renders a successful response' do
         user = create(:user)
         sign_in user
-        create(:post, user_id: user.id)
+        create(:post, user: user)
 
         get posts_url
 
@@ -14,8 +14,8 @@ RSpec.describe 'Posts', type: :request do
       it 'displays user posts' do
         user = create(:user)
         sign_in user
-        create(:post, user_id: user.id)
-        create(:post, user_id: user.id)
+        create(:post, user: user)
+        create(:post, user: user)
 
         get posts_url
 
@@ -29,8 +29,8 @@ RSpec.describe 'Posts', type: :request do
       it 'displays user posts title and content' do
         user = create(:user)
         sign_in user
-        create(:post, title: 'user post 1 title', content: 'user post 1 content', user_id: user.id)
-        create(:post, title: 'user post 2 title', content: 'user post 2 content', user_id: user.id)
+        create(:post, title: 'user post 1 title', content: 'user post 1 content', user: user)
+        create(:post, title: 'user post 2 title', content: 'user post 2 content', user: user)
 
         get posts_url
 
@@ -43,11 +43,10 @@ RSpec.describe 'Posts', type: :request do
       it 'does not display other users posts' do
         user = create(:user)
         sign_in user
-
         user_1 = create(:user)
         user_2 = create(:user)
-        create(:post, title: 'user_1 post title', user_id: user_1.id)
-        create(:post, title: 'user_2 post title', user_id: user_2.id)
+        create(:post, title: 'user_1 post title', user: user_1)
+        create(:post, title: 'user_2 post title', user: user_2)
 
         get posts_url
 
@@ -74,7 +73,7 @@ RSpec.describe 'Posts', type: :request do
       it 'renders a newly created post and successful response' do
         user = create(:user)
         sign_in user
-        post = create(:post, title: 'Prison Escapes', user_id: user.id)
+        post = create(:post, title: 'Prison Escapes', user: user)
 
         get post_url(post)
 
@@ -88,7 +87,7 @@ RSpec.describe 'Posts', type: :request do
         user = create(:user)
         other_user = create(:user)
         sign_in user
-        post = create(:post, title: 'Prison Escapes', user_id: other_user.id)
+        post = create(:post, title: 'Prison Escapes', user: other_user)
 
         get post_url(post)
 
@@ -135,7 +134,7 @@ RSpec.describe 'Posts', type: :request do
       it 'renders a form and successful response' do
         user = create(:user)
         sign_in user
-        post = create(:post, title: 'Update Post', content: 'I will update this post', user_id: user.id)
+        post = create(:post, title: 'Update Post', content: 'I will update this post', user: user)
 
         get edit_post_url(post)
 
@@ -230,7 +229,7 @@ RSpec.describe 'Posts', type: :request do
       it 'destroys the requested post' do
         user = create(:user)
         sign_in user
-        post = create(:post, user_id: user.id)
+        post = create(:post, user: user)
 
         expect { delete post_url(post) }.to change(Post, :count).by(-1)
       end
@@ -238,7 +237,7 @@ RSpec.describe 'Posts', type: :request do
       it 'redirects to the posts list' do
         user = create(:user)
         sign_in user
-        post = create(:post, user_id: user.id)
+        post = create(:post, user: user)
 
         delete post_url(post)
 
@@ -263,7 +262,7 @@ RSpec.describe 'Posts', type: :request do
       it 'updates post' do
         user = create(:user)
         sign_in user
-        post = create(:post, user_id: user.id, title: 'Title', content: 'Content')
+        post = create(:post, user: user, title: 'Title', content: 'Content')
 
         patch post_url(post), params: { post: { title: 'Updated title', content: 'Updated content' } }
         post.reload
