@@ -4,11 +4,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
-gem 'faker', '~> 2.21'
 gem 'devise', '~> 4.8'
 gem 'bootstrap', '~> 5.2'
-gem 'rubocop', '~> 1.35', require: false
-gem 'rubocop-rails', '~> 2.15.2', require: false
 gem 'rails', '~> 7.0.3'
 gem 'sprockets-rails'
 gem 'pg', '~> 1.1'
@@ -33,11 +30,14 @@ group :development, :test do
   gem 'rspec-rails', '~> 6.0.0.rc1'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'overcommit', '~> 0.59.1'
+  gem 'faker', '~> 2.21'
 end
 
 group :development do
   gem 'web-console'
+  gem 'rubocop', '~> 1.35', require: false
+  gem 'rubocop-rails', '~> 2.15.2', require: false
+  gem 'overcommit', '~> 0.59.1'
 end
 
 group :test do

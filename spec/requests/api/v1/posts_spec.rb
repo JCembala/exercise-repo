@@ -5,8 +5,8 @@ RSpec.describe 'Api::V1::Posts', type: :request do
     context 'when request is authenticated' do
       it 'returns list of users posts' do
         user = create(:user, api_key: '4050d1d2dfc9e0b0f3d331825cc64e3d')
-        post_1 = create(:post, title: 'First test post', user_id: user.id)
-        post_2 = create(:post, title: 'Second test post', user_id: user.id)
+        post_1 = create(:post, title: 'First test post', user: user)
+        post_2 = create(:post, title: 'Second test post', user: user)
         create(:post, title: 'Third test post')
 
         get api_v1_posts_path, headers: { Authorization: 'Token token=4050d1d2dfc9e0b0f3d331825cc64e3d' }

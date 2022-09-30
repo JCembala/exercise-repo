@@ -18,14 +18,14 @@ RSpec.describe 'Feeds', type: :request do
         followee_2 = create(:user)
         Follow.create(follower_id: user.id, followed_id: followee_1.id)
         Follow.create(follower_id: user.id, followed_id: followee_2.id)
-        create(:post, user_id: followee_1.id)
-        create(:post, user_id: followee_2.id)
+        create(:post, user: followee_1)
+        create(:post, user: followee_2)
 
         get '/feeds'
 
         assert_select 'ul#posts' do |elements|
           elements.each do |element|
-            assert_select element, 'li#post', 2
+            assert_select element, 'li', 2
           end
         end
       end
@@ -37,8 +37,8 @@ RSpec.describe 'Feeds', type: :request do
         followee_2 = create(:user)
         Follow.create(follower_id: user.id, followed_id: followee_1.id)
         Follow.create(follower_id: user.id, followed_id: followee_2.id)
-        create(:post, title: 'followee_1 post title', user_id: followee_1.id)
-        create(:post, title: 'followee_2 post title', user_id: followee_2.id)
+        create(:post, title: 'followee_1 post title', user: followee_1)
+        create(:post, title: 'followee_2 post title', user: followee_2)
 
         get '/feeds'
 
@@ -53,8 +53,8 @@ RSpec.describe 'Feeds', type: :request do
         followee_2 = create(:user)
         Follow.create(follower_id: user.id, followed_id: followee_1.id)
         Follow.create(follower_id: user.id, followed_id: followee_2.id)
-        create(:post, content: 'followee_1 post content', user_id: followee_1.id)
-        create(:post, content: 'followee_2 post content', user_id: followee_2.id)
+        create(:post, content: 'followee_1 post content', user: followee_1)
+        create(:post, content: 'followee_2 post content', user: followee_2)
 
         get '/feeds'
 
@@ -68,8 +68,8 @@ RSpec.describe 'Feeds', type: :request do
 
         user_1 = create(:user)
         user_2 = create(:user)
-        create(:post, title: 'user_1 post title', user_id: user_1.id)
-        create(:post, title: 'user_2 post title', user_id: user_2.id)
+        create(:post, title: 'user_1 post title', user: user_1)
+        create(:post, title: 'user_2 post title', user: user_2)
 
         get '/feeds'
 
@@ -84,7 +84,7 @@ RSpec.describe 'Feeds', type: :request do
         user = create(:user)
         sign_in user
 
-        create(:post, title: 'user post 1 title', user_id: user.id)
+        create(:post, title: 'user post 1 title', user: user)
 
         get '/feeds'
 
