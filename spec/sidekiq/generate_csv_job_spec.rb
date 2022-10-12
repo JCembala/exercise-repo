@@ -8,7 +8,7 @@ RSpec.describe GenerateCsvJob, type: :job do
       Follow.create(follower: user, followed: followee_2)
       post_1 = create(:post, user: followee_1)
       post_2 = create(:post, user: followee_2)
-      post_3 = create(:post, user: create(:user))
+      post_3 = create(:post)
 
       GenerateCsvJob.new.perform(user.id)
 
