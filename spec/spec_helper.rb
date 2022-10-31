@@ -14,6 +14,9 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 def json_body
   JSON.parse(response.body)
 end
