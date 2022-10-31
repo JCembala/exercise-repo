@@ -23,6 +23,7 @@ gem 'kaminari', '~> 1.2.2'
 gem 'lockbox', '~> 1.0.0'
 gem 'blind_index', '~> 2.2'
 gem 'sidekiq', '~> 6.5', '>= 6.5.6'
+gem 'draper', '~> 4.0', '>= 4.0.2'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.6'
