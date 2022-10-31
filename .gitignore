@@ -41,3 +41,6 @@ rails.rb
 .vscode/*
 
 /config/credentials/test.key
+
+# SimpleCov
+coverage
