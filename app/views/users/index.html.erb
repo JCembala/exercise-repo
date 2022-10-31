@@ -14,15 +14,13 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">First name</th>
-        <th scope="col">Last name</th>
+        <th scope="col">Full name</th>
       </tr>
     </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.first_name  %></td>
-          <td><%= user.last_name  %></td>
+          <td><%= user.full_name  %></td>
           <td>
             <% if user.followed_by?(current_user) %>
               <h5><%= button_to "Unfollow", user_follow_path(user), method: :delete %></h5>
