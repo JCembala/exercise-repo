@@ -7,6 +7,7 @@ class UserForm < Patterns::Form
   validates :first_name, :last_name, :email, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, length: { minimum: 8 }, presence: true, allow_blank: true
+  validate :email_uniqueness, if: -> { resource.email.blank? }
 
   private
 
@@ -16,5 +17,11 @@ class UserForm < Patterns::Form
     else
       resource.update(attributes)
     end
+  end
+
+  def email_uniqueness
+    return unless User.exists?(email: email)
+
+    errors.add(:email, 'has already been taken')
   end
 end
