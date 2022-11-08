@@ -93,5 +93,25 @@ RSpec.describe UserForm do
         'Password is too short (minimum is 8 characters)'
       ]
     end
+
+    it 'returns errors when user is already in db' do
+      create(:user, email: 'jake.abby@test.com')
+      user = User.new
+      form = UserForm.new(
+        user,
+        first_name: 'Jake',
+        last_name: 'Abby',
+        password: '12345678',
+        email: 'jake.abby@test.com'
+      )
+
+      result = form.save
+
+      expect(result).to be false
+      expect(user).not_to be_persisted
+      expect(form.errors.full_messages).to eq [
+        'Email has already been taken'
+      ]
+    end
   end
 end
