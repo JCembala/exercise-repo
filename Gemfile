@@ -24,6 +24,7 @@ gem 'lockbox', '~> 1.0.0'
 gem 'blind_index', '~> 2.2'
 gem 'sidekiq', '~> 6.5', '>= 6.5.6'
 gem 'draper', '~> 4.0', '>= 4.0.2'
+gem 'aasm', '~> 5.4.0'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.6'
@@ -39,6 +40,7 @@ group :development do
   gem 'rubocop', '~> 1.35', require: false
   gem 'rubocop-rails', '~> 2.15.2', require: false
   gem 'overcommit', '~> 0.59.1'
+  gem 'htmlbeautifier', '~> 1.3', '>= 1.3.1'
 end
 
 group :test do
