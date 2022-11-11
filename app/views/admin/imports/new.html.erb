@@ -1,0 +1,10 @@
+<h2>Import Users</h2>
+<%= form_with url: admin_imports_path do |f| %>
+  <div class="field">
+    <%= f.label :choose_file %><br />
+    <%= f.file_field :import %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Import" %>
+  </div>
+<% end %>

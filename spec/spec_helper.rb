@@ -15,6 +15,7 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'simplecov'
+require 'aasm/rspec'
 SimpleCov.start 'rails'
 
 def json_body

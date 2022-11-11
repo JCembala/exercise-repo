@@ -1,0 +1,22 @@
+<div class="mx-auto w-50">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">State</th>
+        <th scope="col">Error message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @imports.each do |import| %>
+        <tr>
+          <th scope="row"><%= import.id %></th>
+          <td><%= import.date  %></td>
+          <td><%= import.aasm_state  %></td>
+          <td><%= import.error_message  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
