@@ -20,3 +20,6 @@ en:
     not_updated: "Api key generation failed"
   feed:
     export_enqueued: "You export has been queued to process"
+  import:
+    success: "Successfuly imported"
+    failure: "Failed when importing"

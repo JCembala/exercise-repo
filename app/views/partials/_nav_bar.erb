@@ -31,6 +31,12 @@
           <li class="nav-item active">
             <%= link_to "Create New User", new_admin_user_path, class: "nav-link" %>
           </li>
+          <li class="nav-item active">
+            <%= link_to "Import New Users", new_admin_import_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "List of imports", admin_imports_path, class: "nav-link" %>
+          </li>
         <%end%>
       <%end%>
     </ul>

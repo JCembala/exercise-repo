@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
     namespace :admin do
       resources :users, only: [:index, :update, :edit, :new, :create]
+      resources :imports, only: [:index, :new, :create]
     end
 
     root to: 'users#index'
