@@ -33,3 +33,12 @@ This project is using overcommit to ensure commit quality.
 * Run `gem install overcommit`
 * Move to your project dir
 * Run `overcommit --install`
+
+### OAuth Google
+On Google Cloud:
+* Create your project
+* Confirgure OAuth consent screen
+* Add your e-mail as test account
+* Add to .env.local your OAuth credentials:
+GOOGLE_CLIENT_ID
+GOOGLE_CLIENT_SECRET

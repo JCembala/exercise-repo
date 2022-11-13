@@ -25,6 +25,8 @@ gem 'blind_index', '~> 2.2'
 gem 'sidekiq', '~> 6.5', '>= 6.5.6'
 gem 'draper', '~> 4.0', '>= 4.0.2'
 gem 'aasm', '~> 5.4.0'
+gem 'omniauth', '~> 2.1'
+gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.6'
