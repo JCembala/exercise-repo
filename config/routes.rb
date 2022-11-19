@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+
   devise_for :users, :skip => [:registrations], controllers: { 
     registrations: 'registrations',
     confirmations: 'confirmations',
@@ -48,6 +49,9 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
 
   # Basic auth for accessing RACK apps: https://blog.arkency.com/common-authentication-for-mounted-rack-apps-in-rails/
   with_dev_auth =

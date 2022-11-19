@@ -1,0 +1,174 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  securitySchemes:
+    authorization:
+      description: Authorization header using Token token=xxxx pattern
+      type: apiKey
+      in: header
+      name: authorization
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: The post ID.
+        title:
+          type: string
+          description: Title of the post.
+        content:
+          type: string
+          description: Content of the post.
+    PostManipulation:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the post.
+        content:
+          type: string
+          description: Content of the post.
+    ArrayOfPosts:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: integer
+            description: The post ID.
+          title:
+            type: string
+            description: Title of the post.
+          content:
+            type: string
+            description: Content of the post.
+
+paths:
+  "/api/v1/posts":
+    get:
+      summary: Lists all posts for user
+      tags:
+      - Post
+      security:
+      - authorization: []
+      responses:
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfPosts'
+        '401':
+          description: Unauthorized
+    post: 
+      summary: Creates a new post for user
+      tags: 
+        - Post
+      security: 
+        - authorization: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostManipulation'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Post'
+  "/api/v1/posts/{id}":
+    get: 
+      summary: Show post by ID
+      tags: 
+        - Post
+      security: 
+        - authorization: []
+      parameters:
+        - name: id
+          in: path
+          description: Post ID
+          required: true
+          schema:
+            type: integer
+      responses: 
+        '200':
+          description: Successful
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Post'
+        '404':
+          description: Not found
+    delete:
+      summary: Deletes post by ID
+      tags: 
+        - Post
+      security: 
+        - authorization: []
+      parameters:
+        - name: id
+          in: path
+          description: Post ID
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Post was deleted
+        '404':
+          description: Not found
+    patch:
+      summary: Updates post
+      tags: 
+        - Post
+      security: 
+        - authorization: []
+      parameters:
+        - name: id
+          in: path
+          description: Post ID
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostManipulation'
+      responses:
+        '200':
+          description: Successful operation
+        '404':
+          description: Not found
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: The post update failed
+
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: localhost:3000
