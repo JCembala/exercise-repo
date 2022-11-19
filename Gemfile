@@ -27,6 +27,7 @@ gem 'draper', '~> 4.0', '>= 4.0.2'
 gem 'aasm', '~> 5.4.0'
 gem 'omniauth', '~> 2.1'
 gem 'omniauth-google-oauth2', '~> 1.1', '>= 1.1.1'
+gem 'rswag', '~> 2.7'
 
 group :development, :test do
   gem 'dotenv-rails', '~> 2.7.6'
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
+  gem "rswag-specs", '~> 2.7'
 end
 
 group :development do
